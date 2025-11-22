@@ -7,7 +7,7 @@ export default function AdminMalwa() {
   // Fetch all malwa requests
   async function loadRequests() {
     try {
-      const res = await fetch("http://localhost:5001/api/malwa/all"); // You'll create this route
+      const res = await fetch("https://scapdeal.onrender.com/api/malwa/all"); // You'll create this route
       const body = await res.json();
       if (body.success) setRequests(body.data);
     } catch (err) {
@@ -22,7 +22,7 @@ export default function AdminMalwa() {
   // Update status: pending → approved → assigned → in_transit → completed
   async function updateStatus(id, status) {
     try {
-      const res = await fetch("http://localhost:5001/api/malwa/status", {
+      const res = await fetch("https://scapdeal.onrender.com/api/malwa/status", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ requestId: id, status }),

@@ -13,7 +13,7 @@ export default function EditProfileModal({ user, onClose, onSave }) {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5001/api/auth/update-profile", {
+      const res = await fetch("https://scapdeal.onrender.com/api/auth/update-profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

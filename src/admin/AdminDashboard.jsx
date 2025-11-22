@@ -56,8 +56,8 @@ export default function AdminDashboard() {
 
       if (tab === "scrap") {
         url = q
-          ? `http://localhost:5001/api/admin/scrap?q=${encodeURIComponent(q)}`
-          : `http://localhost:5001/api/admin/scrap`;
+          ? `https://scapdeal.onrender.com/api/admin/scrap?q=${encodeURIComponent(q)}`
+          : `https://scapdeal.onrender.com/api/admin/scrap`;
 
         const res = await fetch(url, {
           headers: { Authorization: `Bearer ${token}` },
@@ -70,8 +70,8 @@ export default function AdminDashboard() {
 
       if (tab === "malwa") {
         url = q
-          ? `http://localhost:5001/api/malwa/search?q=${encodeURIComponent(q)}`
-          : `http://localhost:5001/api/malwa/all`;
+          ? `https://scapdeal.onrender.com/api/malwa/search?q=${encodeURIComponent(q)}`
+          : `https://scapdeal.onrender.com/api/malwa/all`;
 
         const res = await fetch(url);
         const body = await res.json();
@@ -81,8 +81,8 @@ export default function AdminDashboard() {
 
       if (tab === "dealers") {
         url = q
-          ? `http://localhost:5001/api/dealer/search?q=${encodeURIComponent(q)}`
-          : `http://localhost:5001/api/dealer/all`;
+          ? `https://scapdeal.onrender.com/api/dealer/search?q=${encodeURIComponent(q)}`
+          : `https://scapdeal.onrender.com/api/dealer/all`;
 
         const res = await fetch(url);
         const body = await res.json();
@@ -121,13 +121,13 @@ export default function AdminDashboard() {
       let url, method, body;
 
       if (tab === "scrap") {
-        url = `http://localhost:5001/api/admin/scrap/${id}/status`;
+        url = `https://scapdeal.onrender.com/api/admin/scrap/${id}/status`;
         method = "PATCH";
         body = JSON.stringify({ status });
       }
 
       if (tab === "malwa") {
-        url = `http://localhost:5001/api/malwa/status`;
+        url = `https://scapdeal.onrender.com/api/malwa/status`;
         method = "POST";
         body = JSON.stringify({ requestId: id, status });
       }

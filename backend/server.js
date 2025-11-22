@@ -12,31 +12,48 @@ const logger = require('./src/utils/logger');
 // Initialize Express App
 const app = express();
 
+// CORS FIX (for mobile login)
+app.use(
+  cors({
+    origin: [
+      "https://scapdeal.netlify.app",   // frontend
+      "http://localhost:5173"          // local dev
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+  })
+);
+
+// Preflight CORS (IMPORTANT)
+app.options("*", cors());
+
+// JSON middleware
+app.use(express.json());
+
 // Connect DB FIRST
 connectDB();
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
-// after app.use(express.json())
+// AUTH middleware must be AFTER CORS & JSON
 const authMiddleware = require('./src/middleware/authMiddleware');
-app.use(authMiddleware); // optional global parsing of token
+app.use(authMiddleware);
 
+// Logger
 app.use(morgan('dev'));
 
-// Load All Routes
+// Routes
 app.use("/api", require('./src/routes'));
 
-// Health Check
+// Health
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'scrap-deal-backend' });
 });
 
-// Error Handlers
+// Error handlers
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-// Start Server
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);

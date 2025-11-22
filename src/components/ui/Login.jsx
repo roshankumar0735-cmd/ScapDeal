@@ -9,7 +9,7 @@ export default function Login({ onLoginSuccess, onClose, onopenSignup }) {
   const [error, setError] = useState("");
   const [successText, setSuccessText] = useState("");
 
-  const API = "http://localhost:5001/api/auth";
+  const API = "https://scapdeal.onrender.com/api/auth";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

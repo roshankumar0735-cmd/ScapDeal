@@ -25,7 +25,7 @@ export default function AccountPage({ onLogout }) {
   useEffect(() => {
     if (!phone) return;
 
-    fetch(`http://localhost:5001/api/scrap/my?phone=${phone}`)
+    fetch(`https://scapdeal.onrender.com/api/scrap/my?phone=${phone}`)
       .then((res) => res.json())
       .then((data) => data.success && setScrapHistory(data.data));
   }, [phone]);
@@ -36,7 +36,7 @@ export default function AccountPage({ onLogout }) {
   useEffect(() => {
     if (!phone) return;
 
-    fetch(`http://localhost:5001/api/malwa/my?phone=${phone}&name=${user.name}&email=${user.email}`)
+    fetch(`https://scapdeal.onrender.com/api/malwa/my?phone=${phone}&name=${user.name}&email=${user.email}`)
       .then((res) => res.json())
       .then((data) => data.success && setMalwaHistory(data.data));
   }, [phone]);
@@ -47,7 +47,7 @@ export default function AccountPage({ onLogout }) {
   useEffect(() => {
     if (!phone) return;
 
-    fetch(`http://localhost:5001/api/dealer/my/${phone}`)
+    fetch(`https://scapdeal.onrender.com/api/dealer/my/${phone}`)
 
       .then((res) => res.json())
       .then((data) => data.success && setDealerInfo(data.data));

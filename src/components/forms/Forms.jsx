@@ -124,7 +124,7 @@ export function SellingForm({ onDone }) {
     };
 
     try {
-      const res = await fetch("http://localhost:5001/api/scrap", {
+      const res = await fetch("https://scapdeal.onrender.com/api/scrap", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -342,7 +342,7 @@ export function TruckBookingForm({ onDone }) {
     };
 
     try {
-      const res = await fetch("http://localhost:5001/api/malwa", {
+      const res = await fetch("https://scapdeal.onrender.com/api/malwa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -483,7 +483,7 @@ export function CheckForm() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5001/api/scrap/${query.trim()}`);
+      const res = await fetch(`https://scapdeal.onrender.com/api/scrap/${query.trim()}`);
 
       if (!res.ok) {
         setError("Pickup not found.");
