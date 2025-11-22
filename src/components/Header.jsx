@@ -30,7 +30,7 @@ export default function Header({
           <a href="#home" className="flex items-center gap-2 select-none">
             <span className="text-xl font-bold text-emerald-600">Scrap Deal</span>
             <img
-              src="public/assets/logo.jpg"   // ✅ Correct path
+              src="/assets/logo.jpg"   // ✅ Correct path
               alt="Scrap Deal Logo"
               className="h-10 w-10 object-contain"
             />
