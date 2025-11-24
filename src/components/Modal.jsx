@@ -18,14 +18,16 @@ export default function Modal({ title, open, onClose, children, width = "max-w-m
         </button>
 
         {/* BRAND HEADER — Scrap Deal + Logo */}
-        <div className="flex items-center justify-center gap-3 pt-6 pb-4">
-          <img
-            src={logo}
-            alt="Scrap Deal Logo"
-            className="h-10 w-10 object-contain rounded"
-          />
-          <h1 className="text-2xl font-bold text-green-700">Scrap Deal</h1>
-        </div>
+<div className="flex items-center justify-center gap-2 pt-6 pb-2">
+  <h1 className="text-2xl font-bold text-green-700 flex items-center gap-2">
+    Scrap Deal
+    <img
+      src={logo}
+      alt="Scrap Deal Logo"
+      className="h-8 w-8 object-contain"
+    />
+  </h1>
+</div>
 
 
         {/* Form Title (Login / Sign Up / Account etc.) */}
