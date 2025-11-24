@@ -104,11 +104,13 @@ export default function DealerRegister({ onClose }) {
 
       <input name="companyName" className="w-full border p-3 rounded-md" placeholder="Company Name (Optional)" />
 
-      <input
-  name="phone"
-  placeholder="Phone Number"
-  className="w-full p-3 border rounded-lg"
-/>
+       {/* PHONE */}
+        <input
+          name="phone"
+          placeholder="Phone Number"
+          className="w-full p-3 border rounded-lg"
+        />
+        {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
 
 
 

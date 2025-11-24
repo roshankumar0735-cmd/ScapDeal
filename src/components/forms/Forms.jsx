@@ -189,19 +189,16 @@ export function SellingForm({ onDone }) {
           <p className="text-red-600 text-sm">{errors.district}</p>
         )}
 
-        {/* STATE */}
-        <select
-          name="state"
-          defaultValue=""
-          className="w-full p-3 border rounded-lg bg-white"
-        >
-          <option value="">Select State</option>
-          <option>Delhi</option>
-        </select>
-        {errors.state && (
-          <p className="text-red-600 text-sm">{errors.state}</p>
-        )}
+       {/* STATE */}
+      <select name="state" defaultValue="Delhi" className="w-full border p-3 rounded-md bg-white">
+      <option>Select State</option>
+      <option>Delhi</option>
+      </select>
 
+      <p className="text-xs text-gray-500 mt-1">
+        We are currently serving in Delhi
+      </p>
+      {errors.state && <p className="text-red-600 text-sm">{errors.state}</p>}
         {/* PINCODE */}
         <input
           name="pincode"
@@ -395,13 +392,15 @@ export function TruckBookingForm({ onDone }) {
       {errors.district && <p className="text-red-600 text-sm">{errors.district}</p>}
 
       {/* STATE */}
-      <select name="state" defaultValue="" className="w-full p-3 border rounded-lg bg-white">
-        <option value="">Select State</option>
-        <option>Delhi</option>
-     
+      <select name="state" defaultValue="Delhi" className="w-full border p-3 rounded-md bg-white">
+      <option>Select State</option>
+      <option>Delhi</option>
       </select>
-      {errors.state && <p className="text-red-600 text-sm">{errors.state}</p>}
 
+      <p className="text-xs text-gray-500 mt-1">
+        We are currently serving in Delhi
+      </p>
+      {errors.state && <p className="text-red-600 text-sm">{errors.state}</p>}
       {/* PINCODE */}
       <input name="pincode" placeholder="Pincode" className="w-full p-3 border rounded-lg" />
       {errors.pincode && <p className="text-red-600 text-sm">{errors.pincode}</p>}
