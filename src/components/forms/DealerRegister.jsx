@@ -104,24 +104,12 @@ export default function DealerRegister({ onClose }) {
 
       <input name="companyName" className="w-full border p-3 rounded-md" placeholder="Company Name (Optional)" />
 
-      {/* PHONE (AUTO-FILLED & LOCKED) */}
-      
       <input
-        value={JSON.parse(localStorage.getItem("scrap_deal_user"))?.phone || ""}
-        disabled
-        className="w-full p-3 border rounded-lg bg-gray-100 text-gray-600"
-        style={{ cursor: "not-allowed" }}
-      />
-      <p className="text-xs text-gray-500 mt-1">
-        🔒 This phone number is linked to your account and cannot be changed.
-      </p>
+  name="phone"
+  placeholder="Phone Number"
+  className="w-full p-3 border rounded-lg"
+/>
 
-      {/* HIDDEN FIELD SENT TO BACKEND */}
-      <input
-        type="hidden"
-        name="phone"
-        value={JSON.parse(localStorage.getItem("scrap_deal_user"))?.phone || ""}
-      />
 
 
       <input name="aadhaar" className="w-full border p-3 rounded-md" placeholder="Aadhaar Number" />
