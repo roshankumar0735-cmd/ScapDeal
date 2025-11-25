@@ -19,7 +19,7 @@ app.use(
       "https://scapdeal.netlify.app",   // frontend
       "http://localhost:5173"          // local dev
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE" , "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
   })
