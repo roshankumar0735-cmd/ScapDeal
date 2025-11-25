@@ -16,14 +16,19 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://scapdeal.netlify.app",   // frontend
-      "http://localhost:5173"          // local dev
+      "https://scapdeal.netlify.app",
+      "http://localhost:5173"
     ],
-    methods: ["GET", "POST", "PUT", "DELETE" , "PATCH"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    credentials: true,
+    preflightContinue: false
   })
 );
+
+app.options("*", cors());
+
+
 
 // Preflight CORS (IMPORTANT)
 app.options("*", cors());
