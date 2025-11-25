@@ -106,9 +106,21 @@ export default function DealerRegister({ onClose }) {
 
        {/* PHONE */}
         <input
+          value={JSON.parse(localStorage.getItem("scrap_deal_user"))?.phone || ""}
+          disabled
+          className="w-full p-3 border rounded-lg bg-gray-100 text-gray-600"
+          style={{ cursor: "not-allowed" }}
+        />
+
+        <p className="text-xs text-gray-500 mt-1">
+          This phone number is linked to your account and cannot be changed.
+        </p>
+
+        {/* HIDDEN phone input - real value sent to backend */}
+        <input
+          type="hidden"
           name="phone"
-          placeholder="Phone Number"
-          className="w-full p-3 border rounded-lg"
+          value={JSON.parse(localStorage.getItem("scrap_deal_user"))?.phone || ""}
         />
         {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
 

@@ -369,13 +369,28 @@ export function TruckBookingForm({ onDone }) {
       <input name="name" placeholder="Name" className="w-full p-3 border rounded-lg" />
       {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
 
-      <input
-  name="phone"
-  placeholder="Phone Number"
-  className="w-full p-3 border rounded-lg"
-/>
+    {/* PHONE */}
+        <input
+          value={JSON.parse(localStorage.getItem("scrap_deal_user"))?.phone || ""}
+          disabled
+          className="w-full p-3 border rounded-lg bg-gray-100 text-gray-600"
+          style={{ cursor: "not-allowed" }}
+        />
 
-{errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
+        <p className="text-xs text-gray-500 mt-1">
+          This phone number is linked to your account and cannot be changed.
+        </p>
+
+        {/* HIDDEN phone input - real value sent to backend */}
+        <input
+          type="hidden"
+          name="phone"
+          value={JSON.parse(localStorage.getItem("scrap_deal_user"))?.phone || ""}
+        />
+
+
+
+        {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
 
 
 
@@ -449,7 +464,6 @@ export function TruckBookingForm({ onDone }) {
     </form>
   );
 }
-
 /* ---------------------------
    CHECK FORM
 ----------------------------*/
@@ -472,16 +486,26 @@ export function CheckForm() {
     }
 
     try {
-      const res = await fetch(`https://scapdeal.onrender.com/api/scrap/${query.trim()}`);
-
-      if (!res.ok) {
-        setError("Pickup not found.");
+      // Try SCRAP first
+      const scrapRes = await fetch(`https://scapdeal.onrender.com/api/scrap/${query.trim()}`);
+      if (scrapRes.ok) {
+        const body = await scrapRes.json();
+        setResult(body.data);
         setLoading(false);
         return;
       }
 
-      const body = await res.json();
-      setResult(body.data);
+      // Try MALWA next
+      const malwaRes = await fetch(`https://scapdeal.onrender.com/api/malwa/${query.trim()}`);
+      if (malwaRes.ok) {
+        const body = await malwaRes.json();
+        setResult(body.data);
+        setLoading(false);
+        return;
+      }
+
+      setError("Pickup not found.");
+
     } catch {
       setError("Network error.");
     }
@@ -509,9 +533,17 @@ export function CheckForm() {
         <div className="bg-gray-100 p-4 rounded-xl space-y-2">
           <p><strong>ID:</strong> {result._id}</p>
           <p><strong>Status:</strong> {result.status}</p>
-          <p><strong>Address:</strong> {result.address}</p>
+
+          {/* Scrap pickup shows Address */}
+          {result.address && <p><strong>Address:</strong> {result.address}</p>}
+
+          {/* Malwa truck booking shows pickupLocation */}
+          {result.pickupLocation && (
+            <p><strong>Pickup Location:</strong> {result.pickupLocation}</p>
+          )}
         </div>
       )}
     </div>
   );
 }
+
