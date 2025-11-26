@@ -8,7 +8,7 @@ It includes a complete **Admin Dashboard**, **User Login**, **Dealer Registratio
 ## 🚀 Live Demo
 
 ### 🌐 Frontend (Netlify)
-https://scapdeal.netlify.app/
+https://scap-deal.vercel.app/
 
 ### 🛠 Backend API (Render)
 https://scapdeal.onrender.com/api/
@@ -27,8 +27,7 @@ https://scapdeal.onrender.com/api/
 
 ### 🔹 Dealer / Provider
 - Register as scrap dealer  
-- Manage assigned pickup requests  
-
+  
 ### 🔹 Admin Dashboard
 - View all scrap & malwa requests  
 - Accept / Reject / Complete actions  
@@ -44,7 +43,7 @@ https://scapdeal.onrender.com/api/
 | Frontend | React (Vite), Tailwind CSS |
 | Backend | Node.js, Express.js |
 | Database | MongoDB Atlas |
-| Deployment | Netlify (frontend), Render (backend) |
+| Deployment | vercel (frontend), Render (backend) |
 
 
 ## 📁 Folder Structure
