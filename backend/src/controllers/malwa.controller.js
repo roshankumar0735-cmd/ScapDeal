@@ -116,7 +116,7 @@ exports.updateMalwaStatus = async (req, res, next) => {
   try {
     const { requestId, status } = req.body;
 
-    const allowedStatuses = ['pending', 'approved', 'assigned', 'in_transit', 'completed'];
+    const allowedStatuses = ['pending', 'approved', 'assigned', 'in_transit', 'completed' , 'rejected'];
     if (!allowedStatuses.includes(status)) {
       return res.status(400).json({ success: false, message: 'Invalid status value' });
     }
